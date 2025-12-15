@@ -1,0 +1,234 @@
+\documentclass[a4paper,11pt]{report}
+
+% =========================
+% PACKAGES
+% =========================
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{url}
+\usepackage{microtype}
+\usepackage{lmodern}
+
+% =========================
+% PAGE GEOMETRY
+% =========================
+\geometry{
+  a4paper,
+  left=2.5cm,
+  right=2.5cm,
+  top=3cm,
+  bottom=3cm
+}
+
+\setstretch{1.25}
+\parskip=6pt
+
+% =========================
+% COLOR AND LINK SETUP
+% =========================
+\definecolor{accent}{HTML}{007ACC}
+\definecolor{darkgray}{HTML}{333333}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=accent,
+  urlcolor=accent,
+  citecolor=accent,
+  pdfauthor={Team TinyVision},
+  pdftitle={Real-Time Scene-Aware Assistant for Blind People using TinyVLM}
+}
+
+% =========================
+% HEADER & FOOTER DESIGN
+% =========================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\textcolor{accent}{\textit{TinyVLM Project}}}
+\fancyhead[LO,RE]{\textcolor{accent}{Real-Time Scene-Aware Assistant}}
+\fancyfoot[CE,CO]{\textcolor{gray}{MIRPR 2025–2026}}
+\fancyfoot[LE,RO]{\textcolor{accent}{\thepage}}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{%
+  \color{accent}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0pt}
+
+% =========================
+% SECTION DESIGN
+% =========================
+\titleformat{\chapter}[block]
+  {\normalfont\Huge\bfseries\color{accent}}
+  {\thechapter.}{0.5em}{}
+\titlespacing*{\chapter}{0pt}{0pt}{1em}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{darkgray}}
+  {\thesection}{0.5em}{}
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{darkgray}}
+  {\thesubsection}{0.5em}{}
+
+% =========================
+% TITLE PAGE
+% =========================
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+{\Large \textbf{BABEȘ-BOLYAI UNIVERSITY, CLUJ-NAPOCA, ROMÂNIA}}\\[0.5cm]
+{\large Faculty of Mathematics and Computer Science}\\[4cm]
+
+{\Huge \textbf{Real-Time Scene-Aware Assistant}}\\[0.3cm]
+{\LARGE for Blind People using TinyVLM}\\[0.5cm]
+{\large \textcolor{gray}{MIRPR Project Report 2025–2026}}\\[3cm]
+
+\begin{flushleft}
+\textbf{Team Members:}\\[0.2cm]
+\large
+Moglan Călin\\
+Puscas Raul\\
+\end{flushleft}
+
+\vfill
+{\large Cluj-Napoca, 2025–2026}
+\end{titlepage}
+
+% =========================
+% ABSTRACT
+% =========================
+\pagenumbering{roman}
+\begin{abstract}
+\noindent
+This project proposes the development of a \textbf{Real-Time Scene-Aware Assistant} for blind or visually impaired individuals using \textbf{TinyVLM} — a compact Vision-Language Model optimized for edge deployment. The system performs continuous real-time analysis of the environment, generating detailed, context-aware natural language descriptions and answers to user queries. The project emphasizes \textbf{autonomy, safety, and accessibility} through efficient AI models deployable on mobile or wearable devices. Experiments will focus on recognition accuracy, natural language quality, and real-time performance on low-power devices.
+\end{abstract}
+
+\clearpage
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+% =========================
+% CHAPTER 1 — INTRODUCTION
+% =========================
+\chapter{Introduction}
+
+\section{What? Why? How?}
+
+The \textbf{Real-Time Scene-Aware Assistant for Blind People} aims to provide intelligent visual assistance using the \textbf{TinyVLM} architecture.
+
+\subsection*{What is the problem?}
+Blind or visually impaired individuals face significant challenges in understanding and interacting with their surroundings. Tasks such as identifying obstacles, recognizing people, or understanding environmental context require external assistance.
+
+\subsection*{Why is it important?}
+This project directly impacts accessibility and inclusion by enhancing independence and safety for visually impaired users. Moreover, it demonstrates the power of \textbf{efficient AI on edge devices}, proving that advanced multimodal reasoning can operate within limited hardware constraints.
+
+\subsection*{How do we address it?}
+We design an application that continuously processes camera input, interprets scenes through TinyVLM, and provides real-time natural language descriptions or spoken responses.
+
+\subsection*{Key Base Functionalities}
+\begin{itemize}[leftmargin=1.5cm]
+  \item Real-time environmental analysis.
+  \item Context-aware natural language scene descriptions.
+  \item Dynamic object and movement interpretation.
+  \item Responsive question-answering system.
+  \item Facial recognition for familiar people.
+\end{itemize}
+
+\section{Paper Structure and Contributions}
+The report presents:
+\begin{itemize}
+  \item A comprehensive analysis of challenges faced by visually impaired individuals.
+  \item A real-time TinyVLM-based algorithm for scene understanding.
+  \item A deployable prototype on mobile and wearable devices.
+\end{itemize}
+
+% =========================
+% SCIENTIFIC PROBLEM
+% =========================
+\chapter{Scientific Problem}
+
+\section{Problem Definition}
+Blind or visually impaired people lack real-time access to visual information essential for safe navigation and interaction. Existing systems often rely on bulky equipment or cloud processing, leading to latency and privacy concerns.
+
+\textbf{Input:} Continuous video feed from a wearable or mobile camera, and optional voice queries.\\
+\textbf{Output:} Natural language descriptions, spoken alerts, and answers to user questions.
+
+\subsection*{Performance Criteria}
+\begin{itemize}
+  \item Object/action recognition accuracy (mAP, precision, recall)
+  \item Description quality (BLEU, METEOR, CIDEr, SPICE)
+  \item Latency and real-time response
+  \item Efficiency on low-power hardware
+  \item Human evaluation — perceived usefulness and satisfaction
+\end{itemize}
+
+% =========================
+% RELATED WORK
+% =========================
+\chapter{Related Work}
+
+The following research highlights the advancements that inspired this project:
+
+\begin{enumerate}
+  \item \textbf{Vision-Language Models for Edge Networks:} Lightweight architectures optimized for mobile and IoT deployment.
+  \item \textbf{Navigation with VLM Framework (NavVLM):} Integrates VLM reasoning into robot navigation.
+  \item \textbf{MoViNets:} Efficient 3D CNNs for real-time video recognition.
+  \item \textbf{TinyVLM:} Compact VLM (~0.6B parameters) enabling real-time CPU inference.
+  \item \textbf{Vision Transformer (ViT):} Transformer-based visual representation learning foundational to VLMs.
+\end{enumerate}
+
+% =========================
+% APPLICATION
+% =========================
+\chapter{Application Study Case}
+
+\section{Description and Functionalities}
+The application runs on mobile or wearable devices, providing real-time scene interpretation and natural language feedback.
+
+\begin{itemize}
+  \item Visual context description and event detection.
+  \item Voice-activated question answering.
+  \item Facial recognition for known individuals.
+  \item Real-time feedback via text-to-speech.
+\end{itemize}
+
+\section{Example Use Cases}
+\begin{itemize}
+  \item “Describe my surroundings.”
+  \item “Is there a person in front of me?”
+  \item “Who is nearby?”
+\end{itemize}
+
+% =========================
+% CONCLUSION
+% =========================
+\chapter{Conclusion and Future Work}
+
+This project demonstrates that small-scale Vision-Language Models like \textbf{TinyVLM} can deliver real-time, socially impactful AI solutions on low-power devices.
+
+Future work includes:
+\begin{itemize}
+  \item Integrating multimodal sensors (audio, GPS).
+  \item Enhancing dialogue memory for natural interaction.
+  \item Extending multi-language support.
+\end{itemize}
+
+\bibliographystyle{plain}
+\bibliography{BibAll}
+
+\end{document}
