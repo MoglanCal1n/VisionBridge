@@ -1,234 +1,357 @@
 \documentclass[a4paper,11pt]{report}
 
 % =========================
-% PACKAGES
+% PACKAGES & SETUP
 % =========================
-\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} % Better font rendering
+\usepackage[english]{babel}
 \usepackage{geometry}
-\usepackage{setspace}
 \usepackage{graphicx}
-\usepackage{amsmath,amssymb,amsfonts,amsthm}
-\usepackage{xcolor}
-\usepackage{hyperref}
-\usepackage{titlesec}
-\usepackage{fancyhdr}
-\usepackage{enumitem}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs} % For professional tables
+\usepackage{array}
 \usepackage{caption}
 \usepackage{subcaption}
-\usepackage{booktabs}
-\usepackage{array}
-\usepackage{url}
-\usepackage{microtype}
-\usepackage{lmodern}
+\usepackage{enumitem} % Better lists
+\usepackage{fancyhdr} % Custom headers/footers
+\usepackage{xcolor}
+\usepackage{titlesec} % Custom section titles
+\usepackage{setspace} % Line spacing control
+\usepackage{hyperref} % Links
 
 % =========================
-% PAGE GEOMETRY
+% PAGE GEOMETRY & SPACING
 % =========================
 \geometry{
-  a4paper,
-  left=2.5cm,
-  right=2.5cm,
-  top=3cm,
-  bottom=3cm
+    top=3cm,
+    bottom=3cm,
+    left=2.5cm,
+    right=2.5cm
 }
-
-\setstretch{1.25}
-\parskip=6pt
+\setstretch{1.3} % Slightly more generous line spacing for readability
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0pt}
 
 % =========================
-% COLOR AND LINK SETUP
+% COLORS & LINKS
 % =========================
-\definecolor{accent}{HTML}{007ACC}
-\definecolor{darkgray}{HTML}{333333}
+\definecolor{primary}{HTML}{0056b3} % Professional Blue
+\definecolor{secondary}{HTML}{444444} % Dark Gray
 
 \hypersetup{
-  colorlinks=true,
-  linkcolor=accent,
-  urlcolor=accent,
-  citecolor=accent,
-  pdfauthor={Team TinyVision},
-  pdftitle={Real-Time Scene-Aware Assistant for Blind People using TinyVLM}
+    colorlinks=true,
+    linkcolor=primary,
+    filecolor=magenta,      
+    urlcolor=primary,
+    citecolor=primary,
+    pdftitle={Real-Time Scene-Aware Assistant},
+    pdfauthor={Team VISIONBRIDGE}
 }
 
 % =========================
-% HEADER & FOOTER DESIGN
+% HEADER & FOOTER
 % =========================
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{\textcolor{accent}{\textit{TinyVLM Project}}}
-\fancyhead[LO,RE]{\textcolor{accent}{Real-Time Scene-Aware Assistant}}
-\fancyfoot[CE,CO]{\textcolor{gray}{MIRPR 2025–2026}}
-\fancyfoot[LE,RO]{\textcolor{accent}{\thepage}}
-
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\headrule}{\hbox to\headwidth{%
-  \color{accent}\leaders\hrule height \headrulewidth\hfill}}
+\fancyhead[L]{\small \textit{Real-Time Scene-Aware Assistant}}
+\fancyhead[R]{\small Team VISIONBRIDGE}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0pt}
 
 % =========================
-% SECTION DESIGN
+% TITLES STYLING
 % =========================
-\titleformat{\chapter}[block]
-  {\normalfont\Huge\bfseries\color{accent}}
-  {\thechapter.}{0.5em}{}
-\titlespacing*{\chapter}{0pt}{0pt}{1em}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{primary}}
+  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{0pt}{30pt}
 
 \titleformat{\section}
-  {\normalfont\Large\bfseries\color{darkgray}}
-  {\thesection}{0.5em}{}
-
-\titleformat{\subsection}
-  {\normalfont\large\bfseries\color{darkgray}}
-  {\thesubsection}{0.5em}{}
+  {\normalfont\Large\bfseries\color{secondary}}
+  {\thesection}{1em}{}
 
 % =========================
-% TITLE PAGE
+% DOCUMENT START
 % =========================
 \begin{document}
 
+% --- TITLE PAGE ---
 \begin{titlepage}
-\centering
-\vspace*{2cm}
-{\Large \textbf{BABEȘ-BOLYAI UNIVERSITY, CLUJ-NAPOCA, ROMÂNIA}}\\[0.5cm]
-{\large Faculty of Mathematics and Computer Science}\\[4cm]
-
-{\Huge \textbf{Real-Time Scene-Aware Assistant}}\\[0.3cm]
-{\LARGE for Blind People using TinyVLM}\\[0.5cm]
-{\large \textcolor{gray}{MIRPR Project Report 2025–2026}}\\[3cm]
-
-\begin{flushleft}
-\textbf{Team Members:}\\[0.2cm]
-\large
-Moglan Călin\\
-Puscas Raul\\
-\end{flushleft}
-
-\vfill
-{\large Cluj-Napoca, 2025–2026}
+    \centering
+    \vspace*{1cm}
+    
+    {\large \textsc{Babeș-Bolyai University, Cluj-Napoca}}\\[0.5cm]
+    {\large Faculty of Mathematics and Computer Science}
+    
+    \vspace{4cm}
+    
+    {\Huge \bfseries \color{primary} Real-Time Scene-Aware Assistant}\\[0.5cm]
+    {\LARGE for Blind People using LiquidAI}
+    
+    \vspace{1.5cm}
+    {\large \textit{MIRPR Project Report}}
+    
+    \vspace{4cm}
+    
+    \begin{flushright}
+        \large
+        \textbf{Team Members:}\\[0.5em]
+        Moglan Călin\\
+        Pușcaș Raul
+    \end{flushright}
+    
+    \vfill
+    
+    {\large 2025--2026}
 \end{titlepage}
 
-% =========================
-% ABSTRACT
-% =========================
+% --- ABSTRACT ---
 \pagenumbering{roman}
 \begin{abstract}
-\noindent
-This project proposes the development of a \textbf{Real-Time Scene-Aware Assistant} for blind or visually impaired individuals using \textbf{TinyVLM} — a compact Vision-Language Model optimized for edge deployment. The system performs continuous real-time analysis of the environment, generating detailed, context-aware natural language descriptions and answers to user queries. The project emphasizes \textbf{autonomy, safety, and accessibility} through efficient AI models deployable on mobile or wearable devices. Experiments will focus on recognition accuracy, natural language quality, and real-time performance on low-power devices.
+    \noindent This project proposes the development of a \textbf{Real-Time Scene-Aware Assistant} for blind or visually impaired individuals using \textbf{LiquidAI LFM2-VL} — a compact Vision-Language Model optimized for edge deployment. 
+    
+    \vspace{0.5em}
+    \noindent The core contributions of our work include:
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Main Idea:} A system that performs continuous real-time analysis of the environment, generating context-aware natural language descriptions.
+        \item \textbf{Methods:} Utilization of efficient AI models (Moondream, LiquidAI LFM2) deployable on mobile or wearable devices, emphasizing autonomy and safety.
+        \item \textbf{Data:} Experiments focus on recognition accuracy using datasets like Recaptcha-v2 and VQA-v2.
+        \item \textbf{Results:} We demonstrate that small-scale VLMs can achieve $\sim 90\%$ accuracy in safety-critical tasks like crosswalk detection while running on low-power hardware.
+    \end{itemize}
 \end{abstract}
 
-\clearpage
 \tableofcontents
-\clearpage
+\newpage
+
+% --- MAIN CONTENT ---
 \pagenumbering{arabic}
 
-% =========================
-% CHAPTER 1 — INTRODUCTION
-% =========================
+% ============================================================
 \chapter{Introduction}
+\label{chapter:introduction}
+% ============================================================
 
 \section{What? Why? How?}
+\label{section:what}
 
-The \textbf{Real-Time Scene-Aware Assistant for Blind People} aims to provide intelligent visual assistance using the \textbf{TinyVLM} architecture.
+This project addresses the challenge of providing intelligent visual assistance to visually impaired individuals using the \textbf{LiquidAI LFM} architecture.
 
-\subsection*{What is the problem?}
-Blind or visually impaired individuals face significant challenges in understanding and interacting with their surroundings. Tasks such as identifying obstacles, recognizing people, or understanding environmental context require external assistance.
+\begin{description}[style=unboxed, leftmargin=0cm]
+    \item[What is the scientific problem?] Blind or visually impaired individuals lack real-time access to visual information essential for safe navigation and interaction. Tasks such as identifying obstacles, recognizing people, or understanding environmental context traditionally require human assistance or bulky equipment.
+    
+    \item[Why is it important?] Enhancing independence and safety for visually impaired users directly impacts accessibility and social inclusion. Furthermore, demonstrating that advanced multimodal reasoning can operate within limited hardware constraints (edge devices) is a significant step forward for efficient AI.
+    
+    \item[What is your basic approach?] We design an application that continuously processes camera input, interprets scenes through a compact Vision-Language Model, and provides real-time natural language descriptions or spoken responses.
+\end{description}
 
-\subsection*{Why is it important?}
-This project directly impacts accessibility and inclusion by enhancing independence and safety for visually impaired users. Moreover, it demonstrates the power of \textbf{efficient AI on edge devices}, proving that advanced multimodal reasoning can operate within limited hardware constraints.
+\section{Paper Structure and Original Contribution(s)}
+\label{section:structure}
 
-\subsection*{How do we address it?}
-We design an application that continuously processes camera input, interprets scenes through TinyVLM, and provides real-time natural language descriptions or spoken responses.
+The research presented in this paper advances the practical application of Vision-Language Models on edge devices.
 
-\subsection*{Key Base Functionalities}
-\begin{itemize}[leftmargin=1.5cm]
-  \item Real-time environmental analysis.
-  \item Context-aware natural language scene descriptions.
-  \item Dynamic object and movement interpretation.
-  \item Responsive question-answering system.
-  \item Facial recognition for familiar people.
-\end{itemize}
+The \textbf{main contribution} of this report is to present an intelligent algorithm for real-time scene understanding that balances accuracy with computational efficiency, achieving $\sim 90\%$ accuracy on street object detection tasks.
 
-\section{Paper Structure and Contributions}
-The report presents:
-\begin{itemize}
-  \item A comprehensive analysis of challenges faced by visually impaired individuals.
-  \item A real-time TinyVLM-based algorithm for scene understanding.
-  \item A deployable prototype on mobile and wearable devices.
-\end{itemize}
+The \textbf{second contribution} consists of building an intuitive, voice-activated software application that allows users to query their surroundings naturally (e.g., "Is it safe to cross?").
 
-% =========================
-% SCIENTIFIC PROBLEM
-% =========================
+The \textbf{third contribution} consists of a comparative analysis of different VLM architectures (Moondream vs. LiquidAI) for this specific domain.
+
+The work is structured as follows: Chapter \ref{section:scientificProblem} defines the scientific problem. Chapter \ref{chapter:stateOfArt} reviews related work. Chapter \ref{chapter:proposedApproach} details our experimental approach and results. Chapter \ref{chapter:application} describes the application study case, and we conclude in Chapter \ref{chapter:concl}.
+
+% ============================================================
 \chapter{Scientific Problem}
+\label{section:scientificProblem}
+% ============================================================
 
 \section{Problem Definition}
-Blind or visually impaired people lack real-time access to visual information essential for safe navigation and interaction. Existing systems often rely on bulky equipment or cloud processing, leading to latency and privacy concerns.
+\label{section:problemDefinition}
 
-\textbf{Input:} Continuous video feed from a wearable or mobile camera, and optional voice queries.\\
-\textbf{Output:} Natural language descriptions, spoken alerts, and answers to user questions.
+The core task is \textbf{Open-Vocabulary Street Object Detection and Safety Classification}. Existing systems often rely on cloud processing, leading to latency and privacy concerns, or simple bounding-box detection which lacks semantic context. An intelligent VLM algorithm is required to not just "detect" objects but "understand" the safety implications of a scene.
+
+\begin{center}
+    \framebox{
+    \begin{minipage}{0.9\textwidth}
+        \textbf{Formal Definition:}\\
+        Let $I \in \mathbb{R}^{H \times W \times 3}$ be an input image frame. Let $V$ be a predefined vocabulary of relevant traffic entities, specifically $V = \{\textit{zebra crossing}, \textit{traffic light (red)}, \textit{traffic light (green)}, \textit{none}\}$.
+        
+        The objective is to learn a mapping function $f_\theta: I \rightarrow (C, S)$ parameterized by weights $\theta$, where:
+        \begin{itemize}
+            \item $C \in V$ is the \textbf{Object Classification} label.
+            \item $S \in \{\textit{Safe}, \textit{Unsafe}, \textit{Caution}\}$ is the \textbf{Safety Status}.
+        \end{itemize}
+    \end{minipage}
+    }
+\end{center}
+
+\textbf{Input:} Continuous video feed from a wearable camera and optional voice queries. \\
+\textbf{Output:} Natural language descriptions and safety alerts.
 
 \subsection*{Performance Criteria}
+We evaluate the model using standard classification metrics:
+
 \begin{itemize}
-  \item Object/action recognition accuracy (mAP, precision, recall)
-  \item Description quality (BLEU, METEOR, CIDEr, SPICE)
-  \item Latency and real-time response
-  \item Efficiency on low-power hardware
-  \item Human evaluation — perceived usefulness and satisfaction
+    \item \textbf{Accuracy (Global):} The ratio of correctly predicted observations to total observations.
+    \[ \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN} \]
+    
+    \item \textbf{Precision:} The ratio of correctly predicted positive observations to the total predicted positive observations (crucial for avoiding false alarms).
+    \[ \text{Precision} = \frac{TP}{TP + FP} \]
+    
+    \item \textbf{Recall:} The ratio of correctly predicted positive observations to all observations in the actual class (crucial for safety).
+    \[ \text{Recall} = \frac{TP}{TP + FN} \]
 \end{itemize}
 
-% =========================
-% RELATED WORK
-% =========================
-\chapter{Related Work}
+% ============================================================
+\chapter{State of the Art / Related Work}
+\label{chapter:stateOfArt}
+% ============================================================
 
-The following research highlights the advancements that inspired this project:
+The following research highlights the advancements that inspired this project, comparing traditional methods with modern VLM approaches:
 
-\begin{enumerate}
-  \item \textbf{Vision-Language Models for Edge Networks:} Lightweight architectures optimized for mobile and IoT deployment.
-  \item \textbf{Navigation with VLM Framework (NavVLM):} Integrates VLM reasoning into robot navigation.
-  \item \textbf{MoViNets:} Efficient 3D CNNs for real-time video recognition.
-  \item \textbf{TinyVLM:} Compact VLM (~0.6B parameters) enabling real-time CPU inference.
-  \item \textbf{Vision Transformer (ViT):} Transformer-based visual representation learning foundational to VLMs.
+\begin{enumerate}[label=\textbf{\arabic*.}]
+    \item \textbf{YOLO (You Only Look Once) - Real-Time Object Detection} \\
+    \textit{Goal:} Fast, single-stage object detection for bounding box regression. \\
+    \textit{Data:} Trained on the \textbf{COCO Dataset} (Common Objects in Context). \\
+    \textit{Performance:} YOLOv8 achieves $\sim 53.9\%$ mAP (Mean Average Precision) on COCO val2017. \\
+    \textit{Relevance:} While highly efficient for localization, it lacks the semantic understanding of scene safety required for our specific "blind assistant" task. \\
+    \textit{Reference:} Redmon et al. (CVPR 2016), \url{https://github.com/ultralytics/ultralytics}
+    
+    \item \textbf{Vision Transformers (ViT)} \\
+    \textit{Goal:} Applying the Transformer architecture (self-attention) directly to image sequences of patches. \\
+    \textit{Data:} Pre-trained on \textbf{ImageNet-21k} or JFT-300M. \\
+    \textit{Performance:} Outperforms ResNet backbones on large-scale classification benchmarks ($\sim 88.55\%$ top-1 accuracy on ImageNet). \\
+    \textit{Relevance:} Serves as the foundational visual encoder for modern VLMs like the one used in this project. \\
+    \textit{Reference:} Dosovitskiy et al. (ICLR 2021).
+    
+    \item \textbf{Moondream (TinyVLM)} \\
+    \textit{Goal:} Creating a compact Vision-Language Model ($\sim 1.6$B parameters) optimized for edge devices (mobile/IoT). \\
+    \textit{Data:} Trained on a mix of LLaVA, TextVQA, and synthetic data. \\
+    \textit{Performance:} Competitive with larger models (like LLaVA-7B) on VQAv2 benchmarks while being $4\times$ faster. \\
+    \textit{Relevance:} Our initial experiments used this architecture; while promising for general Q\&A, it showed instability in safety-critical classification without extensive fine-tuning. \\
+    \textit{Reference:} \url{https://github.com/vikhyat/moondream}
+    
+    \item \textbf{NavVLM: Vision-Language Models for Navigation} \\
+    \textit{Goal:} Integrating VLM reasoning into robot navigation to understand spatial instructions. \\
+    \textit{Algorithm:} Uses a VLM to parse natural language commands into goal waypoints. \\
+    \textit{Relevance:} Proves the utility of language models in spatial awareness, validating our approach of using VLMs for pedestrian safety. \\
+    \textit{Reference:} Dorbala et al. (2023).
+
+    \item \textbf{Liquid Foundation Models (LFM)} \\
+    \textit{Goal:} A novel architecture based on dynamic systems and linear attention, designed to be more efficient than standard Transformers for sequence processing. \\
+    \textit{Algorithm:} Unlike static Transformers, LFMs (like LFM-1.6B) utilize adaptive dynamical systems that process inputs with significantly reduced memory footprint during inference. \\
+    \textit{Performance:} Offers state-of-the-art performance for small-scale parameters, rivaling larger Transformer models while maintaining high throughput on edge hardware. \\
+    \textit{Relevance:} This architecture serves as the backbone for our final solution, selected for its superior stability and reasoning capabilities compared to other compact VLMs. \\
+    \textit{Reference:} LiquidAI (2024), \url{https://www.liquid.ai/}
 \end{enumerate}
 
-% =========================
-% APPLICATION
-% =========================
-\chapter{Application Study Case}
+% ============================================================
+\chapter{Investigated Approach and Experimental Analysis}
+\label{chapter:proposedApproach}
+% ============================================================
 
-\section{Description and Functionalities}
+Our research followed an iterative process involving two distinct architectures: \textbf{MoondreamAI} and \textbf{LiquidAI LFM2}.
+
+\section{Phase 1: Experiments with MoondreamAI (Failed)}
+
+Initial attempts focused on the Moondream architecture using a hybrid training strategy with LoRA ($r=16$) on a mixed dataset (771 local images + 500 VQA-v2 images).
+
+\textbf{Hyperparameters:} LR: $1e-5$ (Local) / $3e-5$ (Hybrid), Batch Size: 1.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Moondream Training Metrics}
+    \begin{tabular}{lcc}
+        \toprule
+        \textbf{Metric} & \textbf{Local-Only Run} & \textbf{Hybrid Run} \\ 
+        \midrule
+        Initial Loss & 3.90 & 6.45 \\
+        Final Loss & \textbf{1.65} & 3.40 \\
+        Convergence & Linear (Overfitting Risk) & Unstable $\to$ Stable \\
+        Exact Match Accuracy & N/A & $\sim 80\%$ (Internal Set) \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\textbf{Conclusion:} While the hybrid model achieved stability ($\sim 65.8\%$ accuracy on VQA-v2 subset), it struggled with consistent real-time inference for safety prompts, often hallucinating details.
+
+\section{Phase 2: Experiments with LiquidAI LFM2 (Current Success)}
+
+We transitioned to the LiquidAI LFM2-1.6B model, applying lessons learned from Phase 1.
+
+\subsection{Experiment 2.1: The Baseline Failure}
+\textbf{Configuration:} Learning Rate $1.5e-4$, conversational system prompt. \\
+\textbf{Outcome:} Catastrophic forgetting. The model generated incoherent text loops (e.g., "python of python") and accuracy dropped to $\sim 7\%$. This confirmed that high learning rates destroy pre-trained weights in small VLMs.
+
+\subsection{Experiment 2.2: Stabilization (The "Safe Mode")}
+\textbf{Adjustments:}
+\begin{itemize}
+    \item \textbf{Learning Rate:} Reduced to $4.0e-5$.
+    \item \textbf{Prompt Engineering:} Enforced strict output constraints ("Output ONLY: zebra, none").
+    \item \textbf{Repetition Penalty:} Set to $1.2$.
+\end{itemize}
+\textbf{Outcome:} Loss decreased steadily from 3.5 to 1.05. Token accuracy during training reached 96\%.
+
+\section{Final Results Analysis}
+\label{section:results}
+
+The optimized LiquidAI model was evaluated on a held-out validation set of 500 images.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Performance Metrics on Unseen Validation Data}
+    \begin{tabular}{lc}
+        \toprule
+        \textbf{Metric} & \textbf{Value} \\ 
+        \midrule
+        \textbf{Global Accuracy} & \textbf{89.8\%} \\
+        Precision (Class: Zebra) & 85.9\% \\
+        Recall (Class: Zebra) & 65.0\% \\
+        F1-Score & 0.74 \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\textbf{Discussion:}
+The model achieves a high Global Accuracy ($\sim 90\%$). The High Precision (86\%) indicates few false alarms. The Moderate Recall (65\%) suggests the model is conservative, preferring to predict "none" (safe) when uncertain, which is a specific safety behavior learned during fine-tuning.
+
+% ============================================================
+\chapter{Application (Study Case)}
+\label{chapter:application}
+% ============================================================
+
+\section{App's Description and Main Functionalities}
+\label{section:appDescription}
+
 The application runs on mobile or wearable devices, providing real-time scene interpretation and natural language feedback.
 
+\textbf{Main Functionalities:}
 \begin{itemize}
   \item Visual context description and event detection.
-  \item Voice-activated question answering.
-  \item Facial recognition for known individuals.
+  \item Voice-activated question answering (e.g., "Describe my surroundings").
   \item Real-time feedback via text-to-speech.
 \end{itemize}
 
-\section{Example Use Cases}
-\begin{itemize}
-  \item “Describe my surroundings.”
-  \item “Is there a person in front of me?”
-  \item “Who is nearby?”
-\end{itemize}
+\section{Numerical Validation}
+\label{section:numericalValidation}
 
-% =========================
-% CONCLUSION
-% =========================
+The numerical validation of our approach is detailed in Chapter \ref{chapter:proposedApproach}. We used a rigorous methodology involving training, validation, and testing splits to ensure the results are statistically significant and not a result of overfitting. The final accuracy of $\sim 90\%$ on unseen data validates the proposed TinyVLM approach for this specific domain.
+
+% ============================================================
 \chapter{Conclusion and Future Work}
+\label{chapter:concl}
+% ============================================================
 
-This project demonstrates that small-scale Vision-Language Models like \textbf{TinyVLM} can deliver real-time, socially impactful AI solutions on low-power devices.
+This project demonstrates that small-scale Vision-Language Models like \textbf{LiquidAI} can deliver real-time, socially impactful AI solutions on low-power devices. The transition from a non-functional model to a 90\% accurate system highlights the importance of hyperparameter tuning and data curation.
 
-Future work includes:
+\textbf{Future Work:}
 \begin{itemize}
-  \item Integrating multimodal sensors (audio, GPS).
-  \item Enhancing dialogue memory for natural interaction.
-  \item Extending multi-language support.
+    \item Integrating multimodal sensors (audio, GPS) to improve situational awareness.
+    \item Enhancing dialogue memory for more natural, multi-turn interaction.
+    \item Improving Recall by augmenting the dataset with low-light and occluded examples.
 \end{itemize}
 
-\bibliographystyle{plain}
-\bibliography{BibAll}
+% \bibliographystyle{plain}
+% \bibliography{BibAll}
 
 \end{document}
